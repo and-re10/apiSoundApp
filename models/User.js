@@ -35,4 +35,4 @@ const UsersSchema = mongoose.Schema({
     sounds: [SoundsSchema]
 });
 
-module.exports = mongoose.model('Users', MovieSchema);
+module.exports = mongoose.model('Users', UsersSchema);
