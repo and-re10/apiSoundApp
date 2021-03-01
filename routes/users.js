@@ -14,18 +14,17 @@ Router.get("/showAll", async (req, res) => {
 });
 
 // // Route pour afficher un Utilisateur spécifique
-// Router.get('/showOne/:userId', async (req, res) => {
-//     try {
+Router.get('/showOne/:userId', async (req, res) => {
+    try {
+        const user = await User.findOne({ _id: req.params.userId });
         
-//         const user = await User.findOne({ _id: req.params.userId });
+        res.send(user);
+        console.log(user);
         
-//         res.send(user);
-//         console.log(user);
-        
-//     } catch (error) {
-//         console.log(error);
-//     };
-// });
+    } catch (error) {
+        console.log(error);
+    };
+});
 
 // Route pour ajouter un nouveau Utilisateur
 Router.post('/store', async (req, res) => {
@@ -70,23 +69,45 @@ Router.post('/store', async (req, res) => {
 // //     }
 // // });
 
-// Router.put("/storeImage/:id", upload.single("image"), (req, res, next) => {
-//     User.findOne({
-//         _id: req.params.id
-//     }, function (err, img){
-//         if (err) return res.send(err);
+Router.put("/addContact/:id", async (req, res) => {
 
-//         img.galerie.push({
-//             url: req.body.url
-//         })
+    User.findOne({
+        _id: req.params.id
+    }, function (err, user){
+        if (err) return res.send(err);
 
-//         img.save(function(err){
-//             if (err) return next(err);
-//             console.log(req.file);
-//             return res.send(img);
-//         })
-//     });
-// })
+        user.contacts.push({
+            name: req.body.contactName,
+            color: req.body.contactColor
+        })
+
+        user.save(function(err){
+            if (err) return console.error(error);
+            console.log(user);
+            return res.send(user);
+        })
+    });
+});
+
+// Route pour ajouter des musiques
+Router.put("/addSound/:id", async (req, res) => {
+    User.findOne({
+        _id: req.params.id
+    }, function (err, user){
+        if (err) return res.send(err);
+        
+        user.sounds.push({
+            name: req.body.soundName,
+            categorie: req.body.soundCategorie
+        })
+
+        user.save(function(err){
+            if (err) return console.error(error);
+            console.log(user);
+            return res.send(user);
+        })
+    });
+});
 
 // // Route pour actualizer un Utilisateur existant
 // Router.put('/update/:userId', async (req, res) => {
@@ -112,16 +133,16 @@ Router.post('/store', async (req, res) => {
 // });
 
 // // Route pour supprimer un Utilisateur existant
-// Router.delete("/delete/:userId", async (req, res) => {
-//     try {
-//         const user = await User.deleteOne({
-//             _id: req.params.userId
-//         });
-//         res.send(user);
-//         console.log(user);
-//     } catch (error) {
-//         console.log(error);
-//     };
-// });
+Router.delete("/delete/:userId", async (req, res) => {
+    try {
+        const user = await User.deleteOne({
+            _id: req.params.userId
+        });
+        res.send(user);
+        console.log(user);
+    } catch (error) {
+        console.log(error);
+    };
+});
 
 module.exports = Router;

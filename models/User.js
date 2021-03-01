@@ -8,6 +8,10 @@ const ContactsSchema = mongoose.Schema({
     color: {
         type: String,
         required: false
+    },
+    date: {
+        type: Date,
+        default: Date.now()
     }
 });
 
@@ -19,6 +23,10 @@ const SoundsSchema = mongoose.Schema({
     categorie: {
         type: String,
         required: false
+    },
+    date: {
+        type: Date,
+        default: Date.now()
     }
 })
 
@@ -32,7 +40,11 @@ const UsersSchema = mongoose.Schema({
         required: true
     },
     contacts: [ContactsSchema],
-    sounds: [SoundsSchema]
+    sounds: [SoundsSchema],
+    date: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
 module.exports = mongoose.model('Users', UsersSchema);
