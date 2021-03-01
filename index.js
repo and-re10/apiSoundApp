@@ -47,11 +47,11 @@ app.use('/api/users/', userRoute);
     
 // })
 
-// app.get('/', (req, res) => {
-//     res.json({
-//         msg: 'OK',
-//     })
-// })
+app.get('/', (req, res) => {
+    res.json({
+        msg: 'OK',
+    })
+})
 
 // Port du Server
 app.listen(PORT, () => {
