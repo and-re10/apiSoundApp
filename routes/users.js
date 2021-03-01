@@ -27,23 +27,21 @@ Router.get("/showAll", async (req, res) => {
 //     };
 // });
 
-// // Route pour ajouter un nouveau Utilisateur
-// Router.post('/store', async (req, res) => {
-//     const user = new User({
-//         name: req.body.userName,
-//         age: req.body.userAge,
-//         photo: req.body.userPhoto,
-//         role: req.body.userRole
-//     });
+// Route pour ajouter un nouveau Utilisateur
+Router.post('/store', async (req, res) => {
+    const user = new User({
+        name: req.body.userName,
+        phone: req.body.userPhone,
+    });
     
-//     try {
-//         const saveUser = await user.save();
-//         console.log(saveUser);
-//         res.send(saveUser);
-//     } catch (error) {
-//         console.error(error);
-//     };
-// });
+    try {
+        const saveUser = await user.save();
+        console.log(saveUser);
+        res.send(saveUser);
+    } catch (error) {
+        console.error(error);
+    };
+});
 
 
 
