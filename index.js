@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 require('dotenv/config');
 
 // Data base Connection
-// mongoose.connect(
-//     process.env.DB_CONNECTION, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//         useCreateIndex: true
-//     },
-//     async () => {
-//         try {
-//             console.log("DB CONNECTED");
-//         } catch (error) {
-//             console.error(error);
-//         };
-//     }
-// );
+mongoose.connect(
+    process.env.DB_CONNECTION, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    },
+    async () => {
+        try {
+            console.log("DB CONNECTED");
+        } catch (error) {
+            console.error(error);
+        };
+    }
+);
 
 // Server Connection
 const express = require('express');
@@ -32,8 +32,8 @@ app.use(bodyParser.json());
 // app.use(express.json());
 
 // Routes
-// const userRoute = require('./routes/users');
-// app.use('/api/users/', userRoute);
+const userRoute = require('./routes/users');
+app.use('/api/users/', userRoute);
 
 // const Movie = require('./models/Movie')
 // app.get('/all', async (req, res) => {
