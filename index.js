@@ -34,6 +34,8 @@ app.use(bodyParser.json());
 // Routes
 const userRoute = require('./routes/users');
 app.use('/api/users/', userRoute);
+const categorieRoute = require('./routes/categories');
+app.use('/api/categorie/', categorieRoute);
 
 // const Movie = require('./models/Movie')
 // app.get('/all', async (req, res) => {
