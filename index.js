@@ -32,22 +32,14 @@ app.use(bodyParser.json());
 // app.use(express.json());
 
 // Routes
+const authRouter = require('./routes/auth');
+app.use('/api/auth/', authRouter);
+
 const userRoute = require('./routes/users');
 app.use('/api/users/', userRoute);
+
 const categorieRoute = require('./routes/categories');
 app.use('/api/categorie/', categorieRoute);
-
-// const Movie = require('./models/Movie')
-// app.get('/all', async (req, res) => {
-//     try {
-//         const movies = await Movie.find();
-//         res.send(movies);
-//         console.log(movies);
-//     } catch (error) {
-//         console.error(error);
-//     }
-    
-// })
 
 app.get('/', (req, res) => {
     res.json({

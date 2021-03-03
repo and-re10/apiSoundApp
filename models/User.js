@@ -39,6 +39,12 @@ const UsersSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    password: {
+        type: String,
+        required: true,
+        max: 15,
+        min: 6
+    },
     contacts: [ContactsSchema],
     sounds: [SoundsSchema],
     date: {
