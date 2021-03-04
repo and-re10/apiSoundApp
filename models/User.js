@@ -47,6 +47,10 @@ const UsersSchema = mongoose.Schema({
     },
     contacts: [ContactsSchema],
     sounds: [SoundsSchema],
+    pushToken: {
+        type: String,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now()
