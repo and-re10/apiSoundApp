@@ -23,7 +23,7 @@ Router.post('/register', async(req, res) => {
         name: req.body.userName,
         phone: req.body.userPhone,
         password: hashPassword,
-        pushToken: req.body.pushToken
+        // pushToken: req.body.pushToken
     });
 
     try {
