@@ -9,6 +9,14 @@ const ContactsSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    phone: {
+        type: String,
+        required: false
+    },
+    token: {
+        type: String,
+        required: false
+    },
     date: {
         type: Date,
         default: Date.now()
@@ -47,10 +55,10 @@ const UsersSchema = mongoose.Schema({
     },
     contacts: [ContactsSchema],
     sounds: [SoundsSchema],
-    // pushToken: {
-    //     type: String,
-    //     required: true
-    // },
+    pushToken: {
+        type: String,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now()

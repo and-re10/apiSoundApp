@@ -11,7 +11,7 @@ Router.post('/register', async(req, res) => {
     const { error } = registerValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    // Check if email exists
+    // Check if phone exists
     const phoneExist = await User.findOne({ phone: req.body.userPhone });
     if (phoneExist) return res.status(400).send('Phone number already exists');
 
@@ -23,7 +23,7 @@ Router.post('/register', async(req, res) => {
         name: req.body.userName,
         phone: req.body.userPhone,
         password: hashPassword,
-        // pushToken: req.body.pushToken
+        pushToken: req.body.userPushToken
     });
 
     try {

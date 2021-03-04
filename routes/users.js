@@ -79,11 +79,13 @@ Router.put("/addContact/:id", async (req, res) => {
 
         user.contacts.push({
             name: req.body.contactName,
-            color: req.body.contactColor
+            color: req.body.contactColor,
+            phone: req.body.contactPhone,
+            token: req.body.contactToken
         })
 
         user.save(function(err){
-            if (err) return console.error(error);
+            if (err) return console.error(err);
             console.log(user);
             return res.send(user);
         })
